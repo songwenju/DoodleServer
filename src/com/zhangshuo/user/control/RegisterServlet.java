@@ -17,14 +17,14 @@ import com.zhangshuo.user.domain.User;
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-  
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
@@ -37,14 +37,30 @@ public class RegisterServlet extends HttpServlet {
 		user.setPassword(pwd);
 		System.out.println(user.toString());
 		UserDao userDao = new UserImpls();
-		int result = userDao.add(user);
-		if (result > 0) {
-			MailSent mailSent = new MailSent();
-			mailSent.sendRegistMail(email, userName);
-			System.out.println("数据保存成功");
-		}else {
-			System.out.println("数据保存失败");
-		}
-	}
 
+		User dbUserName = userDao.getDbUser(user.getUserName());
+		User dbUserEmail = userDao.getDbUser(user.getUserEmail());
+
+		if (dbUserName != null) {
+			System.out.println("用户名已经存在");
+			response.getOutputStream().write("2".getBytes("UTF-8"));
+		}else{
+			if (dbUserEmail != null) {
+				System.out.println("邮箱已经存在");
+				response.getOutputStream().write("1".getBytes("UTF-8"));
+			}else {
+				int result = userDao.add(user);
+				if (result > 0) {
+					MailSent mailSent = new MailSent();
+					mailSent.sendRegistMail(email, userName);
+					System.out.println("数据保存成功");
+					response.getOutputStream().write("3".getBytes("UTF-8"));
+				}else {
+					System.out.println("数据保存失败");
+					response.getOutputStream().write("4".getBytes("UTF-8"));
+				}
+			}
+		}
+
+	}
 }

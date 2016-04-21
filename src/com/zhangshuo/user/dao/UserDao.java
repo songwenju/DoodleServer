@@ -16,24 +16,32 @@ public interface UserDao {
 	
 	
 	/**
-	 * 由身份获取用户
+	 * 由用户的身份（姓名或邮箱）获取用户信息
 	 * @param LoginIdentity
 	 * @return
 	 */
-	public User getEmail(String LoginIdentity);
+	public User getDbUser(String LoginIdentity);
 	/**
 	 * 重新输入密码
-	 * @param userName
+	 * @param userEmail
 	 * @param userPassword
 	 * @return
 	 */
-	public int resetPassword(String userName,String userPassword);
+	public int resetPassword(String userEmail,String userPassword);
+	
+	/**
+	 * 更新用户的checkCode
+	 * @param email
+	 * @param checkCode
+	 * @return
+	 */
+	public int updateCheckCode(String email, String checkCode);
 
 	/**
 	 * 检验校验码
+	 * @param userEmail
 	 * @param checkCode
-	 * @param userName
 	 * @return
 	 */
-	public boolean checkUserCode(String checkCode,String userName);
+	public boolean isCheckCode(String userEmail,String checkCode);
 }

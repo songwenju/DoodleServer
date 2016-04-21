@@ -62,7 +62,7 @@ public class MailSent {
 
 
 	/**
-	 * 
+	 * 发送注册成功的邮件
 	 * @param to
 	 * @param userName
 	 * @return
@@ -76,16 +76,10 @@ public class MailSent {
 	 * @param to
 	 * @param userName
 	 */
-	public String sendResetPwdMail(String to,String userName){
-		String checkCode = "" +((int)(Math.random()*100000));
+	public void sendCheckCodeMail(String to,String checkCode){
 		String text = ProjectConstant.EMAIL_FINDPWD_TEXT+"<h4>"+checkCode+"</h4>";
-		String title = ProjectConstant.EMAIL_FINDPWD_TITLE;
+		String title = ProjectConstant.EMAIL_FINDPWD_TITLE+checkCode;
 		sendMail(to,text,title);
-		return checkCode;
 	}
 
-	/*	public  static void main(String[]arg){
-	SendMail s = new SendMail();
-	s.sendRegistMail("1565270590@qq.com", "swj");
-	}*/
 }

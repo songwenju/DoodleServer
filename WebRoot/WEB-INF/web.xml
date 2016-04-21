@@ -17,8 +17,26 @@
     <servlet-name>registerServlet</servlet-name>
     <servlet-class>com.zhangshuo.user.control.RegisterServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CheckCodeServlet</servlet-name>
+    <servlet-class>com.zhangshuo.user.control.CheckCodeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResetPwdServlet</servlet-name>
+    <servlet-class>com.zhangshuo.user.control.ResetPwdServlet</servlet-class>
+  </servlet>
+
+
   <servlet-mapping>
     <servlet-name>registerServlet</servlet-name>
     <url-pattern>/registerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckCodeServlet</servlet-name>
+    <url-pattern>/checkCodeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResetPwdServlet</servlet-name>
+    <url-pattern>/resetPwdServlet</url-pattern>
   </servlet-mapping>
 </web-app>

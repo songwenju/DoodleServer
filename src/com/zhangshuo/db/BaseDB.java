@@ -16,7 +16,7 @@ public class BaseDB {
 	private static final String DRIVER = ProjectConstant.DB_DRIVER;
 	//数据库的链接
 	private static final String URL = ProjectConstant.DB_URL;
-	//数据库用户名			`	
+	//数据库用户名		
 	private static final String USER = ProjectConstant.DB_USER_NAME;
 	//数据库password
 	private static final String PASSWORD = ProjectConstant.DB_PASSWORD;

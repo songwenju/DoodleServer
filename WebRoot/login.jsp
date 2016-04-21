@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<div class="login_title">用户登录</div>
    				<br/>
    				<label for="loginName" class="col-sm-3 control-label" >用户名:</label>
-   				<input type="text" name="loginName" class="form-control" id="loginName" placeholder="用户名">
+   				<input type="text" name="loginUser" class="form-control" id="loginUser" placeholder="用户名">
    				<br/><br/>
    				<label for="loginPass" class="col-sm-3 control-label" >&nbsp;密&nbsp;&nbsp;码:</label>
    				<input type="password" class="form-control" id="loginPass" name="loginPwd" placeholder="密码">
